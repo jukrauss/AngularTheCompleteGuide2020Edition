@@ -8,29 +8,30 @@ export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     new Recipe(
-      'Tasty Schnitzel', 
-      'This is simply a test.', 
+      'Tasty Schnitzel',
+      'This is simply a test.',
       'https://www.glutenfreeandmore.com/wp-content/uploads/2018/07/15latkes.jpg',
-      [
-        new Ingredient('Meat', 1),
-        new Ingredient('French Fries', 20)
-      ]),
-    new Recipe('Burger',
-     'This is simply a second test.',
+      [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
+    ),
+    new Recipe(
+      'Burger',
+      'This is simply a second test.',
       'https://www.glutenfreeandmore.com/wp-content/uploads/2018/07/15latkes.jpg',
-      [
-        new Ingredient('Buns', 2),
-        new Ingredient('Meat', 1)
-      ])
+      [new Ingredient('Buns', 2), new Ingredient('Meat', 1)]
+    ),
   ];
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(private shoppingListService: ShoppingListService) {}
 
   getRecipes() {
     return this.recipes.slice();
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]){
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
   }
 }
